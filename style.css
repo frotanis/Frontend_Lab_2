@@ -1,0 +1,289 @@
+/* --------------------------------------------------------------------------
+   1. БАЗОВІ СТИЛІ ТА КОЛЬОРИ
+   -------------------------------------------------------------------------- */
+
+/* Два шрифти (system-ui / Georgia) + Спосіб кольору 1: HEX (#201f1f)[cite: 6, 10] */
+body {
+    margin: 0;
+    padding-top: 165px; /* Компенсація позиціонування шапки */
+    font-family: system-ui, Arial, sans-serif;
+    color: #201f1f;
+    background-color: #ffffff;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Georgia', serif; /* Другий шрифт[cite: 6] */
+    margin-top: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. ШАПКА ТА НАВІГАЦІЯ (ГОЛОВНА СТОРОНА)
+   -------------------------------------------------------------------------- */
+
+/* Позиціонування 1: position: absolute (Варіант 1: top: 0)[cite: 6, 8, 10]
+   Властивості: display: flex, z-index: 10[cite: 6, 8] */
+#main-header, .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo_container {
+    display: flex;
+    align-items: center;
+}
+
+/* Комбінатор 1: дочірній ( > )[cite: 6] */
+.logo_container > div {
+    margin-left: 15px;
+}
+
+.logo_container h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #201f1f;
+}
+
+.partner_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.partner_buttons p {
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #201f1f;
+}
+
+/* --------------------------------------------------------------------------
+   3. ОСНОВНИЙ КОНТЕНТ (index.html)
+   -------------------------------------------------------------------------- */
+
+/* Позиціонування 2: position: relative[cite: 6, 8, 10] */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Властивість float + Спосіб кольору 2: Name (darkgreen)[cite: 6] */
+.aside-tip {
+    float: right;
+    width: 220px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-left: 4px solid darkgreen;
+    margin-left: 15px;
+}
+
+/* Варіант 1: margin (25px) > padding (10px)[cite: 8]
+   Смуга прокручування: overflow-y: auto[cite: 6, 10] */
+.goals-section {
+    margin: 25px 0;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Комбінатор 2: сусідній ( + )[cite: 6] */
+h2 + p {
+    margin-top: 5px;
+}
+
+/* Псевдоелемент 1: ::before (Варіант 1: привітальний емодзі)[cite: 6, 8] */
+.goal-text::before {
+    content: "👋 ";
+}
+
+/* 2D-трансформація: translateY(-2%) при наведенні (Варіант 1)[cite: 6, 8] */
+.tech-table-container {
+    transition: transform 0.3s ease;
+}
+
+.tech-table-container:hover {
+    transform: translateY(-2%);
+}
+
+/* Селектор атрибута: [data-tech="store"][cite: 6] */
+[data-tech="store"] .tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tech-table th {
+    /* Спосіб кольору 3: HSL[cite: 6] */
+    background-color: hsl(0, 0%, 95%);
+}
+
+/* Інтерактивний елемент transition (3+ властивості)[cite: 6, 10]
+   Селектор часткового атрибута: [class*="btn"][cite: 6] */
+[class*="btn"] {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    color: #201f1f;
+    border: 1px solid #201f1f;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Псевдоклас 1: :hover[cite: 6, 10] */
+[class*="btn"]:hover {
+    background-color: darkgreen;
+    color: #ffffff;
+    border-color: darkgreen;
+}
+
+/* Позиціонування 3: position: static[cite: 6, 8, 10] */
+.footer {
+    position: static;
+    padding: 15px 20px;
+    background-color: #f2f2f2;
+    margin-top: 20px;
+}
+
+/* Псевдоелемент 2: ::selection (Варіант 1: затримка 2 сек + Спосіб кольору 4: RGB)[cite: 6, 8] */
+.footer-contacts ::selection {
+    background-color: darkgreen;
+    color: rgb(255, 255, 255);
+    transition: background-color 2s, color 2s;
+}
+
+/* --------------------------------------------------------------------------
+   4. СТОРІНКА «КАТАЛОГ» (catalog.html) — GRID LAYOUT
+   -------------------------------------------------------------------------- */
+
+/* Позиціонування 4: position: fixed (Варіант 1: фіксована шапка)[cite: 6, 8, 10] */
+#catalog-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    z-index: 100;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* GRID-КОНТЕЙНЕР (для захисту на відео: демонстрація + 3 зміни)[cite: 6, 10] */
+.catalog-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* GRID-ЕЛЕМЕНТ (Варіант 1: рамка darkgreen, border-top dotted, box-shadow inset)[cite: 6, 8]
+   (для захисту на відео: демонстрація + 3 зміни)[cite: 10] */
+.product-card {
+    border: 1px solid darkgreen;
+    border-top: 1px dotted darkgreen;
+    box-shadow: inset 0 0 8px rgba(0, 100, 0, 0.2);
+    padding: 15px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Варіант 1: назва товару (похилий шрифт, більша вага та розмір)[cite: 8] */
+.product-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 10px 0 5px 0;
+    color: #201f1f;
+}
+
+/* Анімація зображення (Варіант 1: імітація старовинного зображення)[cite: 6, 8, 10] */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: filter 0.4s ease;
+}
+
+.product-card:hover img {
+    animation: vintage-effect 0.5s forwards;
+}
+
+@keyframes vintage-effect {
+    from { filter: sepia(0) contrast(1); }
+    to { filter: sepia(0.85) contrast(1.2); }
+}
+
+/* Псевдоклас 2: :visited (Варіант 1: темно-зелені відвідані посилання)[cite: 6, 8] */
+.product-card a:visited, .catalog-main a:visited {
+    color: darkgreen;
+}
+
+/* --------------------------------------------------------------------------
+   5. СТОРІНКА «ЗВОРОТНІЙ ЗВ'ЯЗОК» (feedback.html) — FLEXBOX
+   -------------------------------------------------------------------------- */
+
+.feedback-main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* FLEX-КОНТЕЙНЕР (для захисту на відео: демонстрація + 3 зміни)[cite: 6, 10] */
+.feedback-form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* FLEX-ЕЛЕМЕНТИ (для захисту на відео: демонстрація + 3 зміни)[cite: 6, 10] */
+.form-section {
+    order: 1;
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: 100%;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.form-group {
+    order: 2;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 45%;
+    align-self: auto;
+    margin-bottom: 10px;
+}
+
+.form-group:has(textarea), 
+.form-group:has(button), 
+.form-group:has(#consent) {
+    flex-basis: 100%;
+}
